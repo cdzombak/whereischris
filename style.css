@@ -65,23 +65,6 @@ body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to prese
 
 select, input, textarea, button { font:99% sans-serif; }
 
-/* normalize monospace sizing 
- * en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome
- */
-pre, code, kbd, samp { font-family: Consolas,
-             "Andale Mono",
-             "Lucida Console",
-             "Lucida Sans Typewriter",
-             "DejaVu Sans Mono",
-             "Bitstream Vera Sans Mono",
-             "Liberation Mono",
-             "Nimbus Mono L",
-             Monaco,
-             "Courier New",
-             Courier,
-             monospace !important; }
- 
-
 /* 
  * minimal base styles 
  */
@@ -93,14 +76,12 @@ body, select, input, textarea {
 
 /* always force a scrollbar in non-IE */ 
 html { overflow-y: scroll; }
-
  
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
 a, a:active, a:visited { color: #506880; }
 a:hover { text-decoration: none; }
-
 
 ul, ol { margin-left: 1.8em; }
 ol { list-style-type: decimal; }
@@ -115,16 +96,6 @@ td, td img { vertical-align: top; }
 
 sub { vertical-align: sub; font-size: smaller; }
 sup { vertical-align: super; font-size: smaller; }
-
-pre { 
-  /*padding: 15px; */
-  
-  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
-  /*white-space: pre;*/ /* CSS2 */
-  /*white-space: pre-wrap;*/ /* CSS 2.1 */
-  /*white-space: pre-line;*/ /* CSS 3 (and 2.1 as well, actually) */
-  word-wrap: break-word; /* IE */
-}
  
 textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
 
@@ -242,14 +213,7 @@ table td {
 header.primary-header {
 	margin-bottom: 50px;
 }
-/*header.primary-header #cdz-gravatar {
-	width: 32px;
-	height: 32px;
-	padding-right: 20px;
-	position: relative;
-	top: 10px;
-	display: none;
-}*/
+
 header.primary-header h1 {
 	border: 0;
 	margin: 0;
@@ -315,7 +279,7 @@ section.half-section.right {
 	margin: 0 0 50px 0;
 }
 
-section#recently .recent-block {
+section#streams .stream-block {
 	width: 159px;
 	float: left;
 	margin-bottom: 40px;
@@ -325,65 +289,43 @@ section#recently .recent-block {
 	overflow: hidden;
 	word-wrap: break-word;
 }
-	section#recently .recent-block:nth-child(3) {
+	section#streams .stream-block:nth-child(3) {
 		padding-left: 0;
 		width: 174px;
 	}
-	section#recently .recent-block:last-child {
+	section#streams .stream-block:last-child {
 		border-right: 0;
 		padding-right: 0;
 		width: 174px;
 	}
-	section#recently .recent-block h2 {
+	section#streams .stream-block h2 {
 		margin: -2px 0 6px 0;
 	}
-	#recently-delicious ul, #recently-twitter ul, #recently-blog ul {
+	#stream-twitter ul, #stream-foursquare ul {
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
-	#recently-delicious ul li, #recently-twitter ul li, #recently-blog ul li {
+	#stream-twitter ul li, #stream-foursquare ul li {
 		margin: 0;
 		padding: 0 0 6px 0;
 		border-bottom: 1px solid #ddd;
 	}
-	#recently-delicious ul li:last-child, #recently-twitter ul li:last-child, #recently-blog ul li:last-child {
+	#stream-twitter ul li:last-child, #stream-foursquare ul li:last-child {
 		border-bottom: 0;
 	}
-	section#recently .recent-block ul li {
+	section#streams .stream-block ul li {
 		margin-bottom: 6px;
 	}
-	#recently-twitter .tweet_time {
+	#stream-twitter .tweet_time {
 		font-style: italic;
 	}
-	#recently-blog .timestamp {
+	#stream-foursquare .timestamp {
 		display: block;
 		font-style: italic;
 	}
-	/*#recently-blog .timestamp:after {
-		content: ":";
-	}*/
-section#recently .action-expand-recent {
+section#streams .action-reload {
 	float: right;
-}
-	
-ul.blog-list {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-}
-ul.blog-list li {
-	margin: 0 0 11px 0;
-	padding: 0;
-}
-ul.blog-list li:hover .timestamp {
-	font-weight: bold;
-}
-ul.blog-list .timestamp {
-	width: 110px;
-	display: block;
-	float: left;
-	font-style: italic;
 }
 
 article header time {
@@ -478,11 +420,11 @@ section p, article p, section ul, article ul {
 	font-size: 14px;
 	line-height: 20px;
 }
-section#recently .recent-block ul {
+section#streams .stream-block ul {
 	font-size: 13px;
 	line-height: 18px;
 }
-section#recently .recent-block h2 {
+section#streams .stream-block h2 {
 	letter-spacing: 0.9px;
 }
 
@@ -499,7 +441,7 @@ h3, h4, h5, h6 {
 h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 }
-section#recently .recent-block h2 {
+section#streams .stream-block h2 {
 	font-size: 15px;
 }
 
@@ -510,186 +452,30 @@ footer p {
 	margin: 0;
 }
 
-/** recent sections */
+/** stream sections */
 
-section#recently #recently-flickr a:nth-child(2) {
-	clear: left;
-}
-section#recently #recently-flickr a:nth-child(2n) {
-	margin-right: 9px;
-}
-section#recently #recently-flickr a {
-	margin-bottom: 8px;
-	display: block;
-	float: left;
-}
-section#recently #recently-flickr img {
-	width: 75px;
-	height: 75px;
-}
-
-section#recently #recently-lastfm ol {
+section#streams #stream-lastfm ol {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-section#recently #recently-lastfm li {
+section#streams #stream-lastfm li {
 	margin: 0 0 8px 0;
 	padding: 0;
 	display: block;
 	float: left;
 	width: 75px;
 }
-section#recently #recently-lastfm li:nth-child(2n+1) {
+section#streams #stream-lastfm li:nth-child(2n+1) {
 	margin-right: 9px;
 }
-section#recently #recently-lastfm img {
+section#streams #stream-lastfm img {
 	width: 75px;
 	height: 75px;
-}
-
-/* code/pre */
-
-code {
-	padding: 1px 3px 1px 3px;
-	background-color: #f4f4f4;
-	font-family: Consolas,
-             "Andale Mono",
-             "Lucida Console",
-             "Lucida Sans Typewriter",
-             "DejaVu Sans Mono",
-             "Bitstream Vera Sans Mono",
-             "Liberation Mono",
-             "Nimbus Mono L",
-             Monaco,
-             "Courier New",
-             Courier,
-             monospace !important;
-}
-pre {
-	background-color: #f6f6f6;
-	border: 1px solid #e2e2e2;
-	padding: 10px 15px 10px 15px;
-	margin-bottom: 11px;
-	line-height: 19px;
-}
-pre code {
-	background-color: transparent;
-	padding: 0;
 }
 
 
 /* hacks */
 html.ie6 #bio, html.ie7 #bio, html.ie8 #bio, html.ie9 #bio {
 	font-size: 15px;
-}
-
-/* code highlighting */
-
-.hll { background-color: #ffffcc }
-.c { color: #408080; font-style: italic } /* Comment */
-.err { border: 1px solid #FF0000 } /* Error */
-.k { color: #008000; font-weight: bold } /* Keyword */
-.o { color: #666666 } /* Operator */
-.cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.cp { color: #BC7A00 } /* Comment.Preproc */
-.c1 { color: #408080; font-style: italic } /* Comment.Single */
-.cs { color: #408080; font-style: italic } /* Comment.Special */
-.gd { color: #A00000 } /* Generic.Deleted */
-.ge { font-style: italic } /* Generic.Emph */
-.gr { color: #FF0000 } /* Generic.Error */
-.gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.gi { color: #00A000 } /* Generic.Inserted */
-.go { color: #808080 } /* Generic.Output */
-.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-.gs { font-weight: bold } /* Generic.Strong */
-.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.gt { color: #0040D0 } /* Generic.Traceback */
-.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
-.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
-.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
-.kp { color: #008000 } /* Keyword.Pseudo */
-.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
-.kt { color: #B00040 } /* Keyword.Type */
-.m { color: #666666 } /* Literal.Number */
-.s { color: #BA2121 } /* Literal.String */
-.na { color: #7D9029 } /* Name.Attribute */
-.nb { color: #008000 } /* Name.Builtin */
-.nc { color: #0000FF; font-weight: bold } /* Name.Class */
-.no { color: #880000 } /* Name.Constant */
-.nd { color: #AA22FF } /* Name.Decorator */
-.ni { color: #999999; font-weight: bold } /* Name.Entity */
-.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-.nf { color: #0000FF } /* Name.Function */
-.nl { color: #A0A000 } /* Name.Label */
-.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-.nt { color: #008000; font-weight: bold } /* Name.Tag */
-.nv { color: #19177C } /* Name.Variable */
-.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.w { color: #bbbbbb } /* Text.Whitespace */
-.mf { color: #666666 } /* Literal.Number.Float */
-.mh { color: #666666 } /* Literal.Number.Hex */
-.mi { color: #666666 } /* Literal.Number.Integer */
-.mo { color: #666666 } /* Literal.Number.Oct */
-.sb { color: #BA2121 } /* Literal.String.Backtick */
-.sc { color: #BA2121 } /* Literal.String.Char */
-.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
-.s2 { color: #BA2121 } /* Literal.String.Double */
-.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-.sh { color: #BA2121 } /* Literal.String.Heredoc */
-.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-.sx { color: #008000 } /* Literal.String.Other */
-.sr { color: #BB6688 } /* Literal.String.Regex */
-.s1 { color: #BA2121 } /* Literal.String.Single */
-.ss { color: #19177C } /* Literal.String.Symbol */
-.bp { color: #008000 } /* Name.Builtin.Pseudo */
-.vc { color: #19177C } /* Name.Variable.Class */
-.vg { color: #19177C } /* Name.Variable.Global */
-.vi { color: #19177C } /* Name.Variable.Instance */
-.il { color: #666666 } /* Literal.Number.Integer.Long */
-
-
-
-
-/*
- * Media queries for responsive design
- * These follow after primary styles so they will successfully override. 
- */
-
-@media all and (orientation:portrait) { 
-  /* Style adjustments for portrait mode goes here */
-  
-}
-
-@media all and (orientation:landscape) { 
-  /* Style adjustments for landscape mode goes here */
-  
-}
-
-/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
-   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
-  
-  
-  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you
-     j.mp/textsizeadjust 
-  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
-}
-
-/* 
- * print styles
- * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
- */
-@media print {
-  * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
-  a, a:visited { color: #444 !important; text-decoration: underline; }
-  a:after { content: " (" attr(href) ")"; } 
-  abbr:after { content: " (" attr(title) ")"; }
-  .ir a:after { content: ""; }  /* Don't show links for images */
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */ 
-  tr, img { page-break-inside: avoid; }
-  @page { margin: 0.5cm; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3{ page-break-after: avoid; }
 }
