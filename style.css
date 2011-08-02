@@ -324,9 +324,6 @@ section#streams .stream-block {
 		display: block;
 		font-style: italic;
 	}
-section#streams .action-reload {
-	float: right;
-}
 
 article header time {
 	margin-top: -8px;
