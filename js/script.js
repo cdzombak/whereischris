@@ -1,15 +1,15 @@
 
 $(document).ready(function(){
-    if ($("#recently-twitter").length) {
-		$("#recently-twitter").tweet({
+    if ($("#stream-twitter").length) {
+		$("#stream-twitter").tweet({
 			username: "cdzombak",
 			join_text: "",
-			count: 15,
+			count: 20,
 			loading_text: "loading...",
-			refresh_interval: 120,
+			refresh_interval: 400,
 			link_user: false
 		});
-		$('#recently-twitter').bind('loaded', function() {
+		$('#stream-twitter').bind('loaded', function() {
 			twttr.anywhere(onAnywhereLoad);
 			function onAnywhereLoad(twitter) { twitter.hovercards(); };
 		});
@@ -32,11 +32,11 @@ $(document).ready(function(){
     	
 	konami = new Konami();
 	konami.code = function() {
-		var s = document.createElement('script');
-		s.type='text/javascript';
-		document.body.appendChild(s);
-		s.src='http://erkie.github.com/asteroids.min.js';
-		void(0);
+		$.getScript('http://www.cornify.com/js/cornify.js', function(){  
+			for (i=0; i<15; ++i) {
+				cornify_add();
+			}
+		});
 	};
 	konami.load();
 });
