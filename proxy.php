@@ -1,5 +1,7 @@
 <?php
+
 header('Content-type: application/xml');
+
 $handle = fopen($_REQUEST['url'], "r");
 
 if ($handle) {
@@ -9,4 +11,3 @@ if ($handle) {
     }
     fclose($handle);
 }
-?>
