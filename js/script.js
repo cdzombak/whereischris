@@ -64,4 +64,8 @@ $(document).ready(function(){
 		});
 	};
 	konami.load();
+	
+	setInterval(function() {
+		window.location.reload();
+	}, 240000);
 });
