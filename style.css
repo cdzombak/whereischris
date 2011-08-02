@@ -280,7 +280,7 @@ section.half-section.right {
 }
 
 section#streams .stream-block {
-	width: 159px;
+	width: 296px;
 	float: left;
 	margin-bottom: 40px;
 	padding: 0 15px 0 15px;
@@ -289,16 +289,14 @@ section#streams .stream-block {
 	overflow: hidden;
 	word-wrap: break-word;
 }
-	section#streams .stream-block:nth-child(3) {
+	section#streams .stream-block:first-child {
 		padding-left: 0;
-		width: 174px;
 	}
 	section#streams .stream-block:last-child {
 		border-right: 0;
 		padding-right: 0;
-		width: 174px;
 	}
-	section#streams .stream-block h2 {
+	section#streams .stream-block h1 {
 		margin: -2px 0 6px 0;
 	}
 	#stream-twitter ul, #stream-foursquare ul {
@@ -421,7 +419,7 @@ section#streams .stream-block ul {
 	font-size: 13px;
 	line-height: 18px;
 }
-section#streams .stream-block h2 {
+section#streams .stream-block h1 {
 	letter-spacing: 0.9px;
 }
 
@@ -438,8 +436,8 @@ h3, h4, h5, h6 {
 h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 }
-section#streams .stream-block h2 {
-	font-size: 15px;
+section#streams .stream-block h1 {
+	font-size: 16px;
 }
 
 footer p {
