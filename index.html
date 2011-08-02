@@ -1,0 +1,87 @@
+<!doctype html>  
+<html lang="en" class="no-js">
+<head> 
+	<meta charset="utf-8"> 
+	
+	<title>Where Is Chris?/title> 
+	
+	<meta name="author" content="Chris Dzombak"> 
+ 	
+	<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>  
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'> 
+	<link href='http://fonts.googleapis.com/css?family=Arvo:regular' rel='stylesheet' type='text/css'> 
+	
+	<!-- CSS : implied media="all" --> 
+	<link rel="stylesheet" href="/css/style.css">
+</head> 
+ 
+<body> 
+ 
+	<div id="container"> 
+	
+		<header class="primary-header"> 
+			<hgroup> 
+				<h1><a href="/">Where Is Chris?</a></h1> 
+				<p id="bio">Also check out my real site, <a href="http://chris.dzombak.name">chris.dzombak.name</a>.</p> 
+			</hgroup>
+		</header>
+		
+		<section id="map" class="wide-section">
+		
+		</section>
+		
+		<section id="streams" class="wide-section">
+			<button class="action-reload">Refresh Everything</button> 
+		
+			<div id="recently-twitter" class="stream-block"> 
+				<h2><a href="http://twitter.com/cdzombak" rel="me">Current Tweets</a></h2> 
+				<!-- tweets loaded by JS --> 
+			</div>
+			
+			<div id="recently-lastfm" class="recent-block"> 
+				<h2><a href="http://last.fm/user/cdrom600" rel="me">Current Music</a></h2> 
+				<!-- images loaded via JS --> 
+			</div>
+			
+			<div id="recently-foursquare" class="stream-block">
+				<h2><a href="http://foursquare.com/cdzombak" rel="me">Current Checkins</a></h2> 
+				<!-- images loaded via JS -->
+			</div>
+		</section>
+		
+		<footer>
+			<p>The code for all this isn't too clean; it's a quick hack written the night before a road trip.</p>
+			<p>Contact me at <a href="mailto:chris@chrisdzombak.com">chris@chrisdzombak.com</a>.</p> 
+			<p>Site and content &copy; 2011 <a href="http://chris.dzombak.name">Chris Dzombak</a>.</p> 
+		</footer>
+	
+	</div> <!--! end of #container --> 
+	
+	<!-- thx google -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+	
+	<!-- todo: none of these scripts exist -->
+	<script src="/js/plugins.js"></script> 
+	<script src="/js/libs/jquery.tweet.js"></script>
+	<script src="/js/libs/last.fm.records.js"></script> 
+	<script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script> 
+	<script src='http://platform.twitter.com/anywhere.js?id=X0OHm1KFc0KB45PhSYC4bA&#038;v=1&#038;ver=3.0.4'></script>
+	<script src="/js/script.js"></script>
+    
+	<!-- yay realtime stats -->
+	<script type="text/javascript">
+	  var _gauges = _gauges || [];
+	  (function() {
+		var t   = document.createElement('script');
+		t.type  = 'text/javascript';
+		t.async = true;
+		t.id    = 'gauges-tracker';
+		t.setAttribute('data-site-id', '4e374a32f5a1f55e28000001');
+		t.src = '//secure.gaug.es/track.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(t, s);
+	  })();
+	</script>
+	
+</body> 
+</html> 
