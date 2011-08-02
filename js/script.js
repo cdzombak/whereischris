@@ -20,12 +20,12 @@ $(document).ready(function(){
 	
 	lastFmRecords.init({
 		username: 'cdrom600',
-		placeholder: 'recently-lastfm',
-		defaultthumb: 'img/cover_85px.gif',
-		period: '3month', // which period/type of data do you want to show? you can choose from
+		placeholder: 'stream-lastfm',
+		defaultthumb: 'http://chris.dzombak.name/img/cover_85px.gif',
+		period: 'recenttracks', // which period/type of data do you want to show? you can choose from
 						// recenttracks, 7day, 3month, 6month, 12month, overall, 
 						// topalbums and lovedtracks
-		count: 18,
+		count: 28,
 		refresh: 3,
 		offset: -5
     });

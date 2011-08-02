@@ -284,7 +284,7 @@ section#streams .stream-block {
 	margin-bottom: 40px;
 	padding: 0 15px 0 15px;
 	border-right: 1px solid #dfdfdf;
-	height: 500px;
+	height: 540px;
 	overflow: hidden;
 	word-wrap: break-word;
 }
@@ -454,18 +454,18 @@ section#streams #stream-lastfm ol {
 	padding: 0;
 }
 section#streams #stream-lastfm li {
-	margin: 0 0 8px 0;
+	margin: 0 0 1px 0;
 	padding: 0;
 	display: block;
 	float: left;
-	width: 75px;
+	width: 70px;
 }
-section#streams #stream-lastfm li:nth-child(2n+1) {
-	margin-right: 9px;
+section#streams #stream-lastfm li {
+	margin-right: 4px;
 }
 section#streams #stream-lastfm img {
-	width: 75px;
-	height: 75px;
+	width: 70px;
+	height: 70px;
 }
 
 
