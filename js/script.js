@@ -29,6 +29,31 @@ $(document).ready(function(){
 		refresh: 3,
 		offset: -5
     });
+	
+	$.getFeed({
+        url: '/myfoursquare.rss.php',
+        success: function(feed) {
+            var html = '<ul>';
+			
+			// so ugly; I'm sorry world.
+			// but I still need to pack for this trip
+
+			for(var i = 0; i < feed.items.length && i < 20; ++i) {
+                var item = feed.items[i];
+
+                html += "<li><a href=\"" + item.link + "\">"
+				+ item.description
+				+ "</a>"
+                + '<span class="timestamp">'
+                + jQuery.timeago(item.updated);
+				+ '</span></li>'
+            }
+			
+			html += "</ul>";
+			
+            $('#stream-foursquare').append(html);
+        }
+    });
     	
 	konami = new Konami();
 	konami.code = function() {
