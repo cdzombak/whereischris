@@ -28,6 +28,7 @@ $(document).ready(function(){
         currentLocMarker.bindPopup(popupString).openPopup();
     });
 
+    var gmtOffsetForLastFmScript = new Date().getTimezoneOffset()/60*-1;
 	lastFmRecords.init({
 		username: 'cdrom600',
 		placeholder: 'stream-lastfm',
@@ -35,7 +36,7 @@ $(document).ready(function(){
 		period: 'recenttracks', // recenttracks, 7day, 3month, 6month, 12month, overall, topalbums, or lovedtracks
 		count: 32,
 		refresh: 3,
-		offset: -5
+		offset: gmtOffsetForLastFmScript
     });
 
     $('#foursquare-container').FeedEk({
