@@ -14,12 +14,11 @@ if (!isset($_POST['key']) || $_POST['key'] !== KEY) {
    speed: int or float; will be coerced to int
    speed_unit: string
    heading: int or float; will be coerced to int
-   timestamp: ISO 8601 timestamp - http://en.wikipedia.org/wiki/ISO_8601
 */
 
 $floatKeys = array('lat', 'lon');
 $intKeys = array('speed', 'heading');
-$strKeys = array('speed_unit', 'timestamp');
+$strKeys = array('speed_unit');
 
 $content = array();
 
@@ -37,6 +36,8 @@ foreach ($strKeys as $key) {
     $val = get_post_value($key);
     $content[$key] = strval($val);
 }
+
+$content['timestamp'] = date('c');
 
 $jsonContent = json_encode($content);
 $writeSuccess = file_put_contents(CONTENT_FILENAME, $jsonContent, LOCK_EX);
