@@ -20,7 +20,7 @@ $(document).ready(function(){
         var currentLocMarker = L.marker(latLng).addTo(map);
 
         var popupString = "<em>" + $.timeago(data['timestamp']) + "</em>";
-        if (data['speed'] > 2) {
+        if (data['speed'] > 1) {
             var speedString = data['speed'] + " " + data["speed_unit"];
             var direction = compassbox(data["heading"]);
             popupString = "moving <strong>" + speedString + "</strong> " + direction + "<br />" + popupString;
