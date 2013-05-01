@@ -327,16 +327,12 @@ footer {
 	padding: 10px 20px 10px 20px;
 	margin-top: 60px;
 }
-	footer:hover {
-		color: #555;
-	}
 	footer a, footer a:active, footer a:visited {
 		color: #888;
 	}
 	footer:hover a, footer:hover {
 		color: #555;
 	}
-
 
 /* basic content formatting */
 
