@@ -418,6 +418,7 @@ footer p {
 	font-style: italic;
 	line-height: 15px;
 	margin: 0;
+    text-align: center;
 }
 
 /** stream sections */
