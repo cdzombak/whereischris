@@ -330,9 +330,6 @@ footer {
 	footer a, footer a:active, footer a:visited {
 		color: #888;
 	}
-	footer:hover a, footer:hover {
-		color: #555;
-	}
 
 /* basic content formatting */
 
