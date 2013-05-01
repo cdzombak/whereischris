@@ -1,89 +1,74 @@
-<!doctype html>  
+<!doctype html>
 <html lang="en">
-<head> 
-	<meta charset="utf-8"> 
-	
-	<title>Where Is Chris?</title> 
-	
-	<meta name="author" content="Chris Dzombak"> 
- 	
-	<link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>  
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'> 
-	<link href='http://fonts.googleapis.com/css?family=Arvo:regular' rel='stylesheet' type='text/css'> 
-	
-	<!-- CSS : implied media="all" --> 
-	<link rel="stylesheet" href="style.css">
-</head> 
- 
-<body> 
- 
-	<div id="container"> 
-	
-		<header class="primary-header"> 
-			<hgroup> 
-				<h1><a href="/">Where Is Chris?</a></h1> 
-				<p id="bio">Follow me on road trips. Also check out my real site, <a href="http://chris.dzombak.name">chris.dzombak.name</a>.</p> 
+<head>
+	<meta charset="utf-8">
+
+	<title>Where Is Chris?</title>
+
+	<meta name="author" content="Chris Dzombak">
+
+	<!-- CSS : implied media="all" -->
+	<link href="http://fonts.googleapis.com/css?family=Signika+Negative:300,400,600&amp;subset=latin,latin-ext" rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/style.css">
+
+	<!-- Leaflet maps -->
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+	<!--[if lte IE 8]>
+	    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
+	<![endif]-->
+</head>
+
+<body>
+
+	<div id="container">
+
+		<header class="primary-header">
+			<hgroup>
+				<h1><a href="/">Where Is Chris?</a></h1>
+				<p id="bio">Follow me on road trips.<br />Also check out <a href="http://chris.dzombak.name">my real site</a>, and find me on <a href="http://instagram.com/dzombak">Instagram (@dzombak)</a>.</p>
 			</hgroup>
 		</header>
-		
+
 		<section id="map" class="wide-section">
-			<iframe width="900" height="385" frameborder="0" scrolling="no" src="http://www.instamapper.com/ext?key=5683608274937139070&width=700&height=350&zoom=13&type=roadmap&units=imperial&coords=d"></iframe>
+ 			<div id="map"></div>
 		</section>
-		
+
 		<section id="streams" class="wide-section">
-			<div id="stream-twitter" class="stream-block"> 
-				<h1><a href="http://twitter.com/cdzombak" rel="me">Current Tweets</a></h2> 
-				<!-- tweets loaded by JS --> 
+			<div id="stream-twitter" class="stream-block">
+				<a class="twitter-timeline" href="https://twitter.com/cdzombak" data-widget-id="329332972752879616">Tweets by @cdzombak</a>
 			</div>
-			
-			<div id="stream-lastfm" class="stream-block"> 
-				<h1><a href="http://last.fm/user/cdrom600" rel="me">Current Music</a></h2> 
-				<!-- images loaded via JS --> 
-			</div>
-			
-			<div id="stream-foursquare" class="stream-block">
-				<h1><a href="http://foursquare.com/cdzombak" rel="me">Current Checkins (4sq)</a></h2> 
+
+			<div id="stream-lastfm" class="stream-block">
+				<h1><a href="http://last.fm/user/cdrom600" rel="me">Now Playing</a></h2>
 				<!-- images loaded via JS -->
 			</div>
+
+			<div id="stream-foursquare" class="stream-block">
+				<h1><a href="http://foursquare.com/cdzombak" rel="me">Recent Foursquare Checkins</a></h2>
+				<div id="foursquare-container"></div>
+				<!-- checkins loaded via JS -->
+			</div>
 		</section>
-		
+
 		<footer>
-			<p><a href="#" onclick="window.location.reload()">Refresh this page to check for new data</a>.
-			<a href="https://github.com/cdzombak/whereischris">The code for all this</a> isn't too clean; it's a quick hack written the night before a road trip.</p>
-			<p>Contact me at <a href="mailto:chris@chrisdzombak.com">chris@chrisdzombak.com</a>. Site and content &copy; 2011 <a href="http://chris.dzombak.name">Chris Dzombak</a>.</p> 
-			<p>GPS tracking powered by <a href="http://www.instamapper.com">InstaMapper.com</a>. Thanks, InstaMapper.com!</p>
+			<p><a href="#" onclick="window.location.reload()">Refresh this page to check for new data</a>.</p>
+			<p>by <a href="http://chris.dzombak.name">Chris Dzombak</a></p>
 			<p>&uarr; &uarr; &darr; &darr; &larr; &rarr; &larr; &rarr; b a &crarr;</p>
 		</footer>
-	
-	</div> <!--! end of #container --> 
-	
-	<!-- thx google -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
-	
-	<!-- todo: none of these scripts exist -->
-	<script src="js/plugins.js"></script> 
-	<script src="js/libs/jquery.tweet.js"></script>
-	<script src="js/libs/jquery.timeago.js"></script>
-	<script src="js/libs/jquery.jfeed.pack.js"></script>
-	<script src="js/libs/last.fm.records.js"></script> 
-	<script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script>
-	<script src='http://platform.twitter.com/anywhere.js?id=X0OHm1KFc0KB45PhSYC4bA&#038;v=1&#038;ver=3.0.4'></script>
+
+	</div> <!--! end of #container -->
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script src="js/libs/last.fm.records.js"></script>
+    <script type="text/javascript" src="js/libs/feedek.js"></script>
+    <script type="text/javascript" src="js/libs/jquery.timeago.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+    <script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
 	<script src="js/script.js"></script>
-    
-	<!-- yay realtime stats -->
-	<script type="text/javascript">
-	  var _gauges = _gauges || [];
-	  (function() {
-		var t   = document.createElement('script');
-		t.type  = 'text/javascript';
-		t.async = true;
-		t.id    = 'gauges-tracker';
-		t.setAttribute('data-site-id', '4e374a32f5a1f55e28000001');
-		t.src = '//secure.gaug.es/track.js';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(t, s);
-	  })();
-	</script>
-	
-</body> 
-</html> 
+
+</body>
+</html>

@@ -1,4 +1,20 @@
-/* stolen & mangled from chris.dzombak.name, which is why this sucks so much. */
+/*
+  HTML5 ✰ Boilerplate
+
+  style.css contains a reset, font normalization and some base styles.
+
+  credit is left where credit is due.
+  much inspiration was taken from these projects:
+    yui.yahooapis.com/2.8.1/build/base/base.css
+    camendesign.com/design/
+    praegnanz.de/weblog/htmlcssjs-kickstart
+*/
+
+/*
+  html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+  v1.4 2009-07-27 | Authors: Eric Meyer & Richard Clark
+  html5doctor.com/html-5-reset-stylesheet/
+*/
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -9,7 +25,7 @@ b, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
   margin:0;
@@ -19,10 +35,10 @@ time, mark, audio, video {
   font-size:100%;
   vertical-align:baseline;
   background:transparent;
-}                  
+}
 
 article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section { 
+footer, header, hgroup, menu, nav, section {
     display:block;
 }
 
@@ -65,38 +81,51 @@ body { font:13px/1.231 sans-serif; *font-size:small; } /* hack retained to prese
 
 select, input, textarea, button { font:99% sans-serif; }
 
-/* 
- * minimal base styles 
+/*
+ * minimal base styles
  */
 
 body, select, input, textarea {
-  color: #222; 
-  font-family: 'Arimo', 'PT Sans', sans-serif;
+  color: #222;
+  font-family: 'Signika Negative', 'PT Sans', sans-serif;
+  font-weight: 300;
 }
 
-/* always force a scrollbar in non-IE */ 
+/* always force a scrollbar in non-IE */
 html { overflow-y: scroll; }
- 
+
+
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
 a, a:active, a:visited { color: #506880; }
 a:hover { text-decoration: none; }
 
+
 ul, ol { margin-left: 1.8em; }
 ol { list-style-type: decimal; }
 
 /* Remove margins for navigation lists */
-nav ul, nav li { margin: 0; } 
+nav ul, nav li { margin: 0; }
 
 small { font-size: 85%; }
 strong, th { font-weight: bold; }
 
-td, td img { vertical-align: top; } 
+td, td img { vertical-align: top; }
 
 sub { vertical-align: sub; font-size: smaller; }
 sup { vertical-align: super; font-size: smaller; }
- 
+
+pre {
+  /*padding: 15px; */
+
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+  /*white-space: pre;*/ /* CSS2 */
+  /*white-space: pre-wrap;*/ /* CSS 2.1 */
+  /*white-space: pre-line;*/ /* CSS 3 (and 2.1 as well, actually) */
+  word-wrap: break-word; /* IE */
+}
+
 textarea { overflow: auto; } /* thnx ivannikolic! www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
 
 .ie6 legend, .ie7 legend { margin-left: -7px; } /* thnx ivannikolic! */
@@ -110,65 +139,53 @@ input[type="checkbox"] { vertical-align: bottom; }
 
 /* hand cursor on clickable input elements */
 label, input[type=button], input[type=submit], button { cursor: pointer; }
- 
-/* webkit browsers add a 2px margin outside the chrome of form elements */  
+
+/* webkit browsers add a 2px margin outside the chrome of form elements */
 button, input, select, textarea { margin: 0; }
 
 /* colors for form validity */
 input:valid, textarea:valid   {  }
-input:invalid, textarea:invalid { 
+input:invalid, textarea:invalid {
       border-radius: 1px;
-    -moz-box-shadow: 0px 0px 5px red; 
- -webkit-box-shadow: 0px 0px 5px red; 
+    -moz-box-shadow: 0px 0px 5px red;
+ -webkit-box-shadow: 0px 0px 5px red;
          box-shadow: 0px 0px 5px red;
 }
-.no-boxshadow input:invalid, 
+.no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
 
 /* These selection declarations have to be separate.
-   No text-shadow: twitter.com/miketaylr/status/12228805301 
+   No text-shadow: twitter.com/miketaylr/status/12228805301
    Also: hot pink. */
 /*::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; }*/ 
+::selection { background:#FF5E99; color:#fff; text-shadow: none; }*/
 
 /*  j.mp/webkit-tap-highlight-color */
 /*a:link { -webkit-tap-highlight-color: #FF5E99; } */
 
-/* make buttons play nice in IE:    
+/* make buttons play nice in IE:
    www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
 button {  width: auto; overflow: visible; }
- 
-/* bicubic resizing for non-native sized IMG: 
+
+/* bicubic resizing for non-native sized IMG:
    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
 
-
-/* 
- * Non-semantic helper classes 
+/*
+ * Non-semantic helper classes
  */
 
-/* for image replacement */
-.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 
 /* Hide for both screenreaders and browsers
    css-discuss.incutio.com/wiki/Screenreader_Visibility */
-.hidden { display: none; visibility: hidden; } 
-
-/* Hide only visually, but have it available for screenreaders 
-   www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden  */
-.visuallyhidden { position: absolute !important;    
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px); }
-
-/* Hide visually and from screenreaders, but maintain layout */
-.invisible { visibility: hidden; }
+.hidden { display: none; visibility: hidden; }
 
 /* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
 .clearfix:before, .clearfix:after {
-  content: "\0020"; display: block; height: 0; visibility: hidden;	
-} 
+  content: "\0020"; display: block; height: 0; visibility: hidden;
+}
 
 .clearfix:after { clear: both; }
 /* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
@@ -178,45 +195,29 @@ body {
 	background-color: white;
 }
 
-table {
-	border-width: 1px;
-	border-color: #666666;
-	border-collapse: collapse;
-}
-article table, section table {
-	margin-bottom: 11px;
-}
-table th {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	font-weight: bold;
-	background-color: transparent;
-}
-table td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #666666;
-	background-color: transparent;
-}
-
  /* Layout, Colors
  */
+
+ /* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 #container {
 	width: 950px;
 	margin: 50px auto 30px auto;
 }
 
+#map {
+	width: 900px;
+	height: 400px;
+}
+
 header.primary-header {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+	text-align: center;
 }
 header.primary-header h1 {
 	border: 0;
 	margin: 0;
-	text-shadow: 0 0 4px #afafaf;
 }
 header.primary-header h1 a,
 header.primary-header h1 a:active,
@@ -228,20 +229,14 @@ header.primary-header h1 a:hover {
 header.primary-header #bio {
 	margin-top: 3px;
 	color: #888;
-	text-shadow: 0 0 1px #ddd;
 }
-	header.primary-header hgroup:hover #bio {
-		color: #666;
-		text-shadow: 0 0 1px #ccc;
+	header.primary-header #bio p {
+		font-size: .8em;
 	}
 	header.primary-header #bio a,
 	header.primary-header #bio a:active,
 	header.primary-header #bio a:visited {
 		color: #888;
-	}
-	header.primary-header hgroup:hover #bio a,
-	header.primary-header #bio a:hover {
-		color: #666;
 	}
 
 header.primary-header nav {
@@ -251,12 +246,6 @@ header.primary-header nav {
 		float: left;
 		font-size: 18px;
 		margin-right: 30px;
-	}
-	header.primary-header nav a {
-		/*text-shadow: 0 0 1px #ccc;*/
-	}
-	header.primary-header nav a:hover {
-		text-shadow: 0;
 	}
 
 section.wide-section {
@@ -284,7 +273,7 @@ section#streams .stream-block {
 	margin-bottom: 40px;
 	padding: 0 15px 0 15px;
 	border-right: 1px solid #dfdfdf;
-	height: 540px;
+	height: 570px;
 	overflow: hidden;
 	word-wrap: break-word;
 }
@@ -353,8 +342,6 @@ footer {
 
 section ul, article ul {
 	margin-bottom: 11px;
-	/*list-style: none;
-	text-indent: -1em;*/
 }
 section li, article li {
 	margin-bottom: 3px;
@@ -369,17 +356,11 @@ p {
 h1 {
 	margin: 0 0 11px 0;
 	border-bottom: 1px solid #dfdfdf;
-	font-family: 'Merriweather', serif;
-	/*text-shadow: 0 0 2px #bbb; removed for chrome */
 }
 h2 {
 	margin-bottom: 9px;
 	margin-top: 15px;
-	/*text-shadow: 0 0 2px #ccc;*/
 }
-/*h3,h4,h5,h6 {
-	text-shadow: 0 0 1px #ddd;
-}*/
 h1,h2,h3,h4,h5,h6 {
 	color: #333;
 }
@@ -389,29 +370,22 @@ h3 a, h3 a:visited, h3 a:active, h3 a:hover {
 	color: #333;
 }
 
-blockquote {
-	margin: 0 25px 10px 25px;
-	padding: 10px 20px 5px 20px;
-	border-left: solid 3px #e0e0e0;
-	background-color: #f8f8f8;
-}
-
 /* TYPOGRAPHY */
 
 header.primary-header h1 {
 	text-transform: lowercase;
-	font-family: 'Arvo', serif;
 	font-weight: normal;
-	font-size: 32px;
+	font-size: 36px;
 }
 
 header.primary-header #bio {
 	font-style: italic;
-	font-size: 16px;
+	font-size: 14px;
+	line-height: 19px;
 }
 
 section p, article p, section ul, article ul {
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 20px;
 }
 section#streams .stream-block ul {
@@ -449,6 +423,7 @@ footer p {
 /** stream sections */
 
 section#streams #stream-lastfm ol {
+	text-align: center;
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -458,18 +433,9 @@ section#streams #stream-lastfm li {
 	padding: 0;
 	display: block;
 	float: left;
-	width: 70px;
-}
-section#streams #stream-lastfm li {
-	margin-right: 4px;
+	width: 66px;
 }
 section#streams #stream-lastfm img {
-	width: 70px;
-	height: 70px;
-}
-
-
-/* hacks */
-html.ie6 #bio, html.ie7 #bio, html.ie8 #bio, html.ie9 #bio {
-	font-size: 15px;
+	width: 63px;
+	height: 63px;
 }

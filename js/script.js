@@ -1,71 +1,70 @@
 
 $(document).ready(function(){
-    if ($("#stream-twitter").length) {
-		$("#stream-twitter").tweet({
-			username: "cdzombak",
-			join_text: "",
-			count: 20,
-			loading_text: "loading...",
-			refresh_interval: 400,
-			link_user: false
-		});
-		$('#stream-twitter').bind('loaded', function() {
-			twttr.anywhere(onAnywhereLoad);
-			function onAnywhereLoad(twitter) { twitter.hovercards(); };
-		});
-	} else {
-		twttr.anywhere(onAnywhereLoad);
-		function onAnywhereLoad(twitter) { twitter.hovercards(); };
-	}
-	
+
+    var map = L.map('map');//.setView([38.5, -96.9], 4);
+    L.tileLayer('http://{s}.tile.cloudmade.com/1c3152432f41488e892c6ddc7839917a/997/256/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+        maxZoom: 18,
+        minZoom: 2,
+        detectRetina: true
+    }).addTo(map);
+
+    $.getJSON('/location.json', function(data) {
+        var lat = data['lat'];
+        var lon = data['lon'];
+        if (isNaN(lat) || isNaN(lon)) return;
+        var latLng = [lat, lon];
+
+        map.setView(latLng, 15);
+
+        var currentLocMarker = L.marker(latLng).addTo(map);
+
+        var popupString = "<em>" + $.timeago(data['timestamp']) + "</em>";
+        if (data['speed'] > 2) {
+            var speedString = data['speed'] + " " + data["speed_unit"];
+            var direction = compassbox(data["heading"]);
+            popupString = "moving <strong>" + speedString + "</strong> " + direction + "<br />" + popupString;
+        }
+        currentLocMarker.bindPopup(popupString).openPopup();
+    });
+
 	lastFmRecords.init({
 		username: 'cdrom600',
 		placeholder: 'stream-lastfm',
-		defaultthumb: 'http://chris.dzombak.name/img/cover_85px.gif',
-		period: 'recenttracks', // which period/type of data do you want to show? you can choose from
-						// recenttracks, 7day, 3month, 6month, 12month, overall, 
-						// topalbums and lovedtracks
-		count: 28,
+		defaultthumb: '/record_lp.jpg',
+		period: 'recenttracks', // recenttracks, 7day, 3month, 6month, 12month, overall, topalbums, or lovedtracks
+		count: 32,
 		refresh: 3,
 		offset: -5
     });
-	
-	$.getFeed({
-        url: '/myfoursquare.rss.php',
-        success: function(feed) {
-            var html = '<ul>';
-			
-			// so ugly; I'm sorry world.
-			// but I still need to pack for this trip
 
-			for(var i = 0; i < feed.items.length && i < 20; ++i) {
-                var item = feed.items[i];
-
-                html += "<li><a href=\"" + item.link + "\">"
-				+ item.description
-				+ "</a>"
-                + '<span class="timestamp">'
-                + jQuery.timeago(item.updated);
-				+ '</span></li>'
-            }
-			
-			html += "</ul>";
-			
-            $('#stream-foursquare').append(html);
-        }
+    $('#foursquare-container').FeedEk({
+        FeedUrl: 'https://feeds.foursquare.com/history/RBLD5NMIHX2KNUDT0WK2A4B3CCB0QPYM.rss',
+        MaxCount: 12,
+        ShowDesc: false,
+        ShowPubDate: true,
     });
-    	
-	konami = new Konami();
+
+	var konami = new Konami();
 	konami.code = function() {
-		$.getScript('http://www.cornify.com/js/cornify.js', function(){  
-			for (i=0; i<15; ++i) {
-				cornify_add();
-			}
+		$.getScript('http://www.cornify.com/js/cornify.js', function(){
+			for (i=0; i<12; ++i) cornify_add();
 		});
 	};
 	konami.load();
-	
-	setInterval(function() {
-		window.location.reload();
-	}, 240000);
+
 });
+
+// via: http://rosettacode.org/wiki/Box_the_compass#JavaScript
+function compassbox(i) {
+    var j = i % 8,
+        i = Math.floor(i / 8) % 4,
+        cardinal = ['north', 'east', 'south', 'west'],
+        pointDesc = ['1', '1 by 2', '1-C', 'C by 1', 'C', 'C by 2', '2-C', '2 by 1'],
+        str1, str2, strC;
+
+    str1 = cardinal[i];
+    str2 = cardinal[(i + 1) % 4];
+    strC = (str1 === 'north' || str1 === 'south') ? str1 + str2 : str2 + str1;
+    return pointDesc[j].replace('1', str1).replace('2', str2).replace('C', strC);
+}
