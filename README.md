@@ -14,5 +14,5 @@ The map updates every 15 seconds, which is kinda neat.
 
 Chris Dzombak <[chris.dzombak.name](http://chris.dzombak.name)>
 
-* twitter [@cdzombak](https://twitter.com.cdzombak)
+* twitter [@cdzombak](https://twitter.com/cdzombak)
 * ADN [@dzombak](https://alpha.app.net/dzombak)
