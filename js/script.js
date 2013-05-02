@@ -9,24 +9,45 @@ $(document).ready(function(){
         detectRetina: true
     }).addTo(map);
 
-    $.getJSON('/location.json', function(data) {
-        var lat = data['lat'];
-        var lon = data['lon'];
-        if (isNaN(lat) || isNaN(lon)) return;
-        var latLng = [lat, lon];
-
-        map.setView(latLng, 15);
-
-        var currentLocMarker = L.marker(latLng).addTo(map);
-
-        var popupString = "<em>" + $.timeago(data['timestamp']) + "</em>";
-        if (data['speed'] > 1) {
-            var speedString = data['speed'] + " " + data["speed_unit"];
-            var direction = compassbox(data["heading"]);
-            popupString = "moving <strong>" + speedString + "</strong> " + direction + "<br />" + popupString;
-        }
-        currentLocMarker.bindPopup(popupString).openPopup();
+    var userHasMovedMap = false;
+    map.on('dragstart', function(e) {
+        userHasMovedMap = true;
     });
+
+    var lastTimestamp = "";
+    var lastMarker = null;
+
+    var updateMapLocation = function() {
+        $.getJSON('/location.json', function(data) {
+            if (data['timestamp'] === lastTimestamp) return;
+            lastTimestamp = data['timestamp'];
+
+            var lat = data['lat'];
+            var lon = data['lon'];
+            if (isNaN(lat) || isNaN(lon)) return;
+            var latLng = [lat, lon];
+
+            if (!userHasMovedMap) map.setView(latLng, 15);
+
+            var currentLocMarker = L.marker(latLng).addTo(map);
+
+            var popupString = "<em>" + $.timeago(data['timestamp']) + "</em>";
+            if (data['speed'] > 1) {
+                var speedString = data['speed'] + " " + data["speed_unit"];
+                var direction = compassbox(data["heading"]);
+                popupString = "moving <strong>" + speedString + "</strong> " + direction + "<br />" + popupString;
+            }
+            currentLocMarker.bindPopup(popupString).openPopup();
+
+            if (lastMarker !== null) map.removeLayer(lastMarker);
+            lastMarker = currentLocMarker;
+        });
+    };
+
+    updateMapLocation();
+    setInterval(updateMapLocation, 15000);
+
+    // end map logic
 
     var gmtOffsetForLastFmScript = new Date().getTimezoneOffset()/60*-1;
 	lastFmRecords.init({
