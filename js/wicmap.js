@@ -4,8 +4,7 @@ $(document).ready(function(){
     L.tileLayer('http://{s}.tile.cloudmade.com/1c3152432f41488e892c6ddc7839917a/997/256/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
         maxZoom: 18,
-        minZoom: 2,
-        detectRetina: true
+        minZoom: 2
     }).addTo(map);
 
     var userHasMovedMap = false;
