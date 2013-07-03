@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var map = L.map('map');//.setView([38.5, -96.9], 4);
+    var map = L.map('map');
     L.tileLayer('http://{s}.tile.cloudmade.com/1c3152432f41488e892c6ddc7839917a/997/256/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
         maxZoom: 18,
@@ -26,7 +26,9 @@ $(document).ready(function(){
             if (isNaN(lat) || isNaN(lon)) return;
             var latLng = [lat, lon];
 
-            if (!userHasMovedMap) map.setView(latLng, 15);
+            var newZoomLevel = 15; // default zoom level
+            if (lastMarker !== null) newZoomLevel = map.getZoom();
+            if (!userHasMovedMap) map.setView(latLng, newZoomLevel);
 
             var currentLocMarker = L.marker(latLng).addTo(map);
 
