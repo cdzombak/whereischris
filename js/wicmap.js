@@ -35,7 +35,7 @@ $(document).ready(function(){
             var popupString = "<em>" + $.timeago(data['timestamp']) + "</em>";
             if (data['speed'] > 1) {
                 var speedString = data['speed'] + " " + data["speed_unit"];
-                var direction = compassbox(data["heading"]);
+                var direction = compassbox_en(data["heading"]);
                 popupString = "moving <strong>" + speedString + "</strong> " + direction + "<br />" + popupString;
             }
             currentLocMarker.bindPopup(popupString).openPopup();
@@ -50,16 +50,7 @@ $(document).ready(function(){
 
 });
 
-// via: http://rosettacode.org/wiki/Box_the_compass#JavaScript
-function compassbox(i) {
-    var j = i % 8,
-        i = Math.floor(i / 8) % 4,
-        cardinal = ['north', 'east', 'south', 'west'],
-        pointDesc = ['1', '1 by 2', '1-C', 'C by 1', 'C', 'C by 2', '2-C', '2 by 1'],
-        str1, str2, strC;
-
-    str1 = cardinal[i];
-    str2 = cardinal[(i + 1) % 4];
-    strC = (str1 === 'north' || str1 === 'south') ? str1 + str2 : str2 + str1;
-    return pointDesc[j].replace('1', str1).replace('2', str2).replace('C', strC);
+function compassbox_en(heading) {
+    var directions = [ "north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest", "north" ];
+    return directions[ Math.round(((heading % 360) / 45)) ]
 }
