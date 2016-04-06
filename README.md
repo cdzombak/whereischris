@@ -1,5 +1,7 @@
 # [WhereIsChris](http://whereischris.me)
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 A quick site hacked together to let family and friends view my progress on road trips. It pulls together my location in real-time along with latest [tweets](https://twitter.com/cdzombak), [Last.fm scrobbles](http://last.fm/user/cdrom600), and [Foursquare checkins](https://foursquare.com/cdzombak/history).
 
 ## Location monitoring
